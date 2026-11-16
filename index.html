@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой персональный сайт</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dusty-blue: #a8c5d6;
+            --dusty-blue-dark: #7fa8c0;
+            --cream: #fdfcf9;
+            --cream-dark: #f5f2ec;
+            --text-dark: #2c3e50;
+            --text-light: #5a6c7d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            scroll-behavior: smooth;
+        }
+
+        /* Навигация */
+        nav {
+            background-color: var(--dusty-blue);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--dusty-blue-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Секции */
+        section {
+            padding: 5rem 2rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1, h2 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--dusty-blue);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Главная секция */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--dusty-blue);
+            margin: 2rem 0;
+            object-fit: cover;
+            animation: scaleIn 0.8s ease-out;
+            box-shadow: 0 10px 30px rgba(168, 197, 214, 0.3);
+            background: linear-gradient(135deg, #a8c5d6 0%, #d4e4ed 100%);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .intro-text {
+            max-width: 800px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        /* Обо мне */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .svg-icon {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Портфолио */
+        .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    align-items: start;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.6s ease-out backwards;
+    background: white;
+}
+
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.2s; }
+.gallery-item:nth-child(3) { animation-delay: 0.3s; }
+
+.gallery-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(168, 197, 214, 0.4);
+}
+.gallery-item img {
+    width: 100%;
+    max-height: 300px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    background: white;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+        /* Контакты */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(168, 197, 214, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--cream-dark);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--dusty-blue);
+            box-shadow: 0 0 0 3px rgba(168, 197, 214, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            background-color: var(--dusty-blue);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: var(--dusty-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 197, 214, 0.4);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        /* Футер */
+        footer {
+            background-color: var(--dusty-blue);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.2);
+            color: var(--cream);
+        }
+
+        .contact-info {
+            margin: 1rem 0;
+        }
+
+        .contact-info a,
+        .contact-info span {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--cream);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            section {
+                padding: 4rem 1rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .contact-info a,
+            .contact-info span {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav>
+        <ul>
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <!-- Главная секция -->
+    <section id="home">
+        <h1>Добро пожаловать на мой сайт!</h1>
+        <div class="profile-photo"></div>
+        <p class="intro-text">
+            Привет! Меня зовут Миронова Дарья Андреевна, и я рада приветствовать вас на моей персональной странице. Здесь вы узнаете больше о моем профессиональном опыте и творческих проектах. Я верю, что каждый день приносит новые возможности для роста и саморазвития. Этот сайт создан, чтобы показать работы, которыми я горжусь.
+        </p>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about">
+        <h2>Обо мне</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Я не люблю сидеть на одном месте и не люблю развиваться только в одной области. Я постоянно учусь чему-то новому и развиваюсь, стремясь к совершенству в каждом проекте.
+                </p>
+                <br>
+                <p>
+                    Мои сильные стороны — это креативность, внимание к деталям и умение работать в команде. Я убеждена, что качественная работа требует не только технических навыков, но и искреннего интереса к тому, что делаешь. Именно поэтому каждый мой проект — это отражение моего подхода к делу. Кроме этого, я владею языком программирования Python, имею опыт работы в Excel и Figma, владею английским на уровне B1, имею обширные познания в математике. В 2026 году я написала Единый государственный экзамен по информатике на 90 баллов, по профильной математике - на 86 баллов. Сейчас учусь в Санкт-Петербургском университете аэрокосмического приборостроения на направлении "Системный анализ и управление" на первом курсе.
+                </p>
+            </div>
+            <svg class="svg-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="80" fill="#a8c5d6" opacity="0.3"/>
+                <circle cx="100" cy="100" r="60" fill="#a8c5d6" opacity="0.5"/>
+                <circle cx="100" cy="100" r="40" fill="#a8c5d6"/>
+                <path d="M100 60 L120 100 L100 140 L80 100 Z" fill="#fdfcf9"/>
+                <circle cx="100" cy="100" r="15" fill="#7fa8c0"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section id="portfolio">
+ <h2>Портфолио</h2>
+        <div class="gallery-item">
+    <img src="images/project1.jpg">
+</div>
+    <div class="project-details">
+        <h3>Хакатон "Время IT"</h3>
+        <p class="project-date">Октябрь 2026</p>
+        <p>Хакатон от Санкт-Петербургского Государственного университета аэрокосмического приборостроения, совместно с компанией "Звук". В ходе хакатона мы с командой разработали сайт-караоке. В этом проекте я писала каркас сайта на HTML, который потом дорабатывался моим сокомандником.</p>
+        <a href="https://bobroseksii-dotcom.github.io/hakaton_v1_trah" class="project-link">Сайт →</a>
+    </div>
+</div>
+
+<div class="gallery-item">
+    <img src="images/project2.jpg">
+</div>
+    <div class="project-details">
+        <h3>45-я международная конференция "Школьная информатика и проблемы устойчивого развития"</h3>
+        <p class="project-date">Апрель 2026</p>
+        <p>Вместе с моим одноклассником мы участвовали в школьной конференции по информатике. Мы разрабатывали приложение для расчёта длины пандуса и расчёта его примерной стоимости. В этом проекте я писала теоритическую часть, рассчитывала длину и определяла тип пандуса для нашей школы.</p>
+        <a href="https://docs.google.com/document/d/1Q76-726BKi9Iw1423tJCyQQwS-FS6Mks/edit?usp=sharing&ouid=111327959481540208177&rtpof=true&sd=true" class="project-link">Реферат →</a>
+    </div>
+</div>
+
+<div class="gallery-item">
+    <img src="images/project3.jpg">
+</div>
+    <div class="project-details">
+        <h3>Большая перемена</h3>
+        <p class="project-date">Август 2023</p>
+        <p>В школе я участвовала в конкурсе "Большая перемена", и вышла в полуфинал. В ходе конкурса я решала кейсы от организаторов: проводила анализ, рассчитывала стоимость проектов и защищала их перед жюри.</p>
+    </div>
+</div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact">
+        <h2>Связаться со мной</h2>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message" id="emailError">Пожалуйста, введите корректный email</span>
+            </div>
+            <div class="form-group">
+                <label for="message">Сообщение</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Отправить</button>
+        </form>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="social-links">
+            <a href="https://vk.ru/id603989177" target="_blank" title="ВКонтакте">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.785 16.241s.288-.032.435-.194c.136-.148.132-.427.132-.427s-.019-1.302.576-1.49c.586-.186 1.338 1.235 2.134 1.782.602.413 1.058.322 1.058.322l2.127-.03s1.113-.069.586-.95c-.043-.072-.306-.65-1.578-1.83-1.33-1.235-1.152-1.035.45-3.176.975-1.3 1.365-2.096 1.243-2.436-.117-.325-.836-.239-.836-.239l-2.39.015s-.177-.024-.307.055c-.128.078-.21.259-.21.259s-.378 1.008-.883 1.864c-1.063 1.803-1.49 1.896-1.665 1.782-.408-.265-.306-1.063-.306-1.632 0-1.776.27-2.514-.523-2.705-.264-.063-.458-.105-1.132-.112-.865-.009-1.596.003-2.01.205-.276.135-.489.436-.359.453.16.021.523.098.716.36.248.338.239 1.098.239 1.098s.143 2.09-.333 2.349c-.327.178-.775-.185-1.736-1.843-.492-.849-.863-1.786-.863-1.786s-.072-.176-.2-.271c-.155-.115-.372-.151-.372-.151l-2.27.015s-.341.01-.467.159c-.111.132-.009.406-.009.406s1.773 4.143 3.775 6.223c1.84 1.912 3.93 1.784 3.93 1.784h.947z"/>
+                </svg>
+            </a>
+            <a href="https://t.me" target="_blank" title="Telegram">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="contact-info">
+            <span>+7 (921) 369-72-45</span>
+            <a href="https://mail.ru" target="_blank">da.mironova@list.ru</a>
+        </div>
+        <p>&copy; 2026 Мой персональный сайт. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Валидация формы
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email)) {
+                emailError.style.display = 'block';
+                return;
+            }
+            
+            emailError.style.display = 'none';
+            alert('Форма успешно отправлена!');
+            this.reset();
+        });
+
+        // Скрытие ошибки при вводе
+        document.getElementById('email').addEventListener('input', function() {
+            document.getElementById('emailError').style.display = 'none';
+        });
+
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

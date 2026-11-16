@@ -337,39 +337,44 @@ nav ul {
         }
 
         /* Адаптивность */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
 
-            h1 {
-                font-size: 2rem;
-            }
+    h1 {
+        font-size: 2rem;
+    }
 
-            h2 {
-                font-size: 1.5rem;
-            }
+    h2 {
+        font-size: 1.5rem;
+    }
 
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
+    /* Добавьте эти строки: */
+    .about-content .svg-icon {
+        display: block;
+        margin: 0 auto;
+    }
 
-            .profile-photo {
-                width: 150px;
-                height: 150px;
-            }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
 
-            section {
-                padding: 4rem 1rem 2rem;
-            }
-        }
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
 
+    section {
+        padding: 4rem 1rem 2rem;
+    }
+}
 @media (max-width: 480px) {
     nav ul {
         flex-direction: row;
